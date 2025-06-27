@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamour by Design - Professional Makeup Artist</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #a37a74;
+            --secondary: #f8e9e4;
+            --accent: #d4a59a;
+            --dark: #3c2f2f;
+            --light: #fff9f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            margin-top: 80px;
+            background: linear-gradient(rgba(255, 249, 246, 0.9), rgba(255, 249, 246, 0.9));
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-text h1 {
+            margin-bottom: 20px;
+        }
+        
+        .hero-text p {
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .service-content .price {
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+        
+        /* Booking Section */
+        .booking {
+            padding: 100px 0;
+        }
+        
+        .booking-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .booking-info {
+            flex: 1;
+        }
+        
+        .booking-info h2 {
+            margin-bottom: 20px;
+        }
+        
+        .booking-form {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        /* Portfolio */
+        .portfolio {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 280px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(163, 122, 116, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .testimonial-author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h2 {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info ul {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .contact-map {
+            flex: 1;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 30px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            .hero-image {
+                width: 100%;
+            }
+            
+            .booking-container,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex: 0 0 50%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">FACECARDBY Whitney</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#book">Book Now</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Enhance Your Natural Beauty With Professional Makeup Artistry</h1>
+                    <p>Specializing in bridal, special occasion, and editorial makeup to make you look and feel your absolute best.</p>
+                    <a href="#book" class="btn">Book Your Session</a>
+                    <a href="#portfolio" class="btn btn-secondary">View My Work</a>
+                </div>
+                <div class="hero-image">
+                    <img src="c:\Users\Admin\Downloads\13c8cf38-6e67-4225-a30a-4ae7f31313ac.jfif" alt="Professional makeup artist applying foundation to model with soft natural lighting in modern studio" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Services</h2>
+                <p>Custom makeup applications tailored to your unique style and needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="c:\Users\Admin\Pictures\bridal.jpg" alt="Elegant bride with natural makeup and soft curls looking joyful on her wedding day" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Bridal Makeup</h3>
+                        <p>A flawless, long-lasting look for your special day with a trial session to perfect your ideal style.</p>
+                        <a href="#book" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="c:\Users\Admin\Pictures\debutant.jpg" alt="Glamorous evening makeup with smoky eyes and bold lip at luxury event venue" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Special Occasion</h3>
+                        <p>Perfect for galas, proms, photoshoots, debut, and other events where you want to shine.</p>
+                        <a href="#book" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="c:\Users\Admin\Pictures\event.jpg" alt="Colorful editorial makeup with artistic designs for fashion photography session" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Editorial/Fashion</h3>
+                        <p>Creative, avant-garde looks for photoshoots, fashion shows, and artistic concepts.</p>
+                        <a href="#book" class="btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="booking">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h2>Ready to Book Your Appointment?</h2>
+                    <p>Complete the form to request an appointment. I'll respond within 24 hours to confirm availability and finalize the details.</p>
+                    <p>Please Direct message for rates and availability.</p>
+                </div>
+                <div class="booking-form">
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="bridal">Bridal Makeup</option>
+                                <option value="occasion">Special Occasion</option>
+                                <option value="editorial">Editorial/Fashion</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location (if mobile service needed)</label>
+                            <input type="text" id="location" name="location">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Special Requests</label>
+                            <textarea id="message" name="message"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Request Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+                <p>Browse some of my recent work</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="c:\Users\Admin\Downloads\39152ec4-43de-4162-b838-6205bc553009.jfif" alt="Soft romantic bridal makeup with nude lips and subtle contouring in natural daylight" />
+                    <div class="portfolio-overlay">
+                        <h3>Bridal Makeup</h3>
+                        <p>Natural Beauty</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="c:\Users\Admin\Downloads\58b58342-313f-4d98-9759-0c2edffb17bf.jfif" alt="Dramatic smoky eye with winged liner and bold brows for evening event" />
+                    <div class="portfolio-overlay">
+                        <h3>Special Occasion</h3>
+                        <p>Glamorous Evening</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="c:\Users\Admin\Downloads\event.jfif" alt="Editorial gold foil makeup look with geometric shapes for fashion shoot" />
+                    <div class="portfolio-overlay">
+                        <h3>Editorial</h3>
+                        <p>Gold Foil Art</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="c:\Users\Admin\Downloads\f35f478c-96cc-493b-b7ce-d31b15c02731.jfif" alt="Soft pink monochromatic makeup look for spring editorial in floral setting" />
+                    <div class="portfolio-overlay">
+                        <h3>Editorial</h3>
+                        <p>Pink Fantasy</p>
+                    </div>
+                    </div>
+                <div class="portfolio-item">
+                    <img src="c:\Users\Admin\Downloads\photoshot.jfif" alt="Vintage-inspired retro makeup with red lips and cat eyes for themed photoshoot" />
+                    <div class="portfolio-overlay">
+                        <h3>Editorial</h3>
+                        <p>Retro Glam</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Alomon Polangui Albay</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>Josemaretorres1@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>By Appointment Only</span>
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="https://www.instagram.com/torreswhitney28?igsh=anRrbzZrY3VqM3U="></i></a>
+                        <a href="#"><i class="https://www.facebook.com/"></i></a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="c:\Users\Admin\Pictures\Screenshots\Screenshot (125).png">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FACECARDBY Whitney</h3>
+                    <p>Professional makeup artistry for bridal, special occasions, and editorial work. Helping you look and feel your most beautiful.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#book">Book Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>hello@glamourbydesign.com</p>
+                    <p>09070343270</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; FACECARDBY Whitney. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form Submission
+        const form = document.getElementById('appointment-form');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form data collection
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // In a real implementation, you would send this data to a server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Thank you for your booking request! We will contact you within 24 hours to confirm your appointment.');
+            
+            // Reset form
+            form.reset();
+        });
+        
+        // Portfolio item click handler (for potential lightbox implementation)
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // In a production site, this would open a lightbox with larger image
+                console.log('Portfolio item clicked');
+            });
+        });
+    </script>
+</body>
+</html>
+
